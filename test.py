@@ -42,7 +42,7 @@ cards = [
          "Grocery": 1,
          "restaurants": 5,
          "Entertanment": 3,
-         "Travel", 2
+         "Travel":2,
          "Other":1,
          "override": {
              "Loblaws": 0,
