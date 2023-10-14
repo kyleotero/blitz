@@ -17,7 +17,7 @@ blacklist = {
     "locality",
     "street_address",
     "premise",
-    "route"
+    "route",
 }
 
 openai.api_key = "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"
@@ -43,7 +43,6 @@ def post_handler():
     place = None
 
     for result in results:
-        print(result["types"])
         if result["types"][0] not in blacklist:
             place = result
             break
@@ -83,7 +82,6 @@ def best_card(category, store, cards):
     greatest = ("", 0)
 
     for card in cards:
-        print(card)
         if card["status"]:
             if store in card["override"]:
                 if card["override"][store] > greatest[1]:
