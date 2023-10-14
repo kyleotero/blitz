@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import * as Location from "expo-location";
 import axios from "axios";
 
-export default function App() {
+export default function bestCard() {
   const [location, setLocation] = useState();
   const [temp, setTemp] = useState(null);
 
