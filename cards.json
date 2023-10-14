@@ -1,10 +1,10 @@
 [
     {
-        "Name": "Triangle world elite mastercard",
-        "Restaurants": 1,
-        "Grocery_Stores": 3,
-        "Travel": 4,
-        "Gas": 0,
+        "active": true,
+        "name": "Triangle world elite mastercard",
+        "restaurants": 1,
+        "groceries": 3,
+        "travel": 4,
         "other": 1,
         "override": {
             "canadian tire gas": 5,
@@ -24,44 +24,47 @@
             "nofrills": 4
         }
     },
-    {
-        "Name": "PC Financial World Elite",
-        "Grocery": 3,
-        "Restaurant": 1,
-        "Gas": 0,
-        "Travel": 3,
-        "Other": 1,
-        "Override": {
+    {   
+        "active": true,
+        "name": "PC Financial World Elite",
+        "groceries": 3,
+        "restaurants": 1,
+        "travel": 3,
+        "other": 1,
+        "override": {
             "Esso": 3,
             "Mobil": 4
         }
     },
     {
-        "Name": "CIBC Student Cashback Card",
-        "Grocery": 2,
-        "Restaurants": 1,
-        "Gas": 1,
-        "Other": 0.5
+        "active": true,
+        "name": "CIBC Student Cashback Card",
+        "groceries": 2,
+        "restaurants": 1,
+        "gas": 1,
+        "other": 0.5
     },
     {
-        "Name": "AMEX Cobalt",
-        "Grocery": 1,
-        "Restaurants": 5,
-        "Entertanment": 3,
-        "Travel": 2,
-        "Other": 1,
-        "Override": {
-            "Loblaws": 0,
-            "Shoppers": 0,
-            "Costco": 0
+        "active": true,
+        "name": "AMEX Cobalt",
+        "groceries": 1,
+        "restaurants": 5,
+        "entertainment": 3,
+        "travel": 2,
+        "other": 1,
+        "override": {
+            "loblaws": 0,
+            "shoppers": 0,
+            "costco": 0
         }
     },
     {
-        "Name": "Scotia Momentum Visa Infinite Card",
-        "Grocery": 4,
-        "Gas": 2,
-        "Travel": 1,
-        "Entertanment": 2,
-        "Other": 1
+        "active": true,
+        "name": "Scotia Momentum Visa Infinite Card",
+        "groceries": 4,
+        "gas": 2,
+        "travel": 1,
+        "entertainment": 2,
+        "other": 1
     }
 ]

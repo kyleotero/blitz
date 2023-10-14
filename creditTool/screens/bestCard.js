@@ -29,7 +29,7 @@ export default function bestCard() {
     if (location) {
       const { latitude, longitude } = location.coords;
 
-      const url = `http://10.0.2.2:5000/get_cards`;
+      const url = `http://127.0.0.1:5000/get_cards`;
       const data = {
         lat: latitude,
         long: longitude,

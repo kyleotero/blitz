@@ -24,7 +24,7 @@ openai.api_key = "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"
 
 
 @app.route("/get_cards", methods=["POST"])
-def post_handler():
+def get_cards():
     data = request.get_json()
     latitude = str(data.get("lat"))
     longitude = str(data.get("long"))
@@ -78,6 +78,11 @@ def post_handler():
     return jsonify(res), 200
 
 
+@app.route("/error_fix", methods=["GET"])
+def error_fix():
+    return
+
+
 def best_card(category, store, cards):
     greatest = ("", 0)
 
@@ -86,6 +91,7 @@ def best_card(category, store, cards):
             if store in card["override"]:
                 if card["override"][store] > greatest[1]:
                     greatest = (card["name"], card["override"][store])
+                    break
 
             if category in card:
                 if card[category] > greatest[1]:

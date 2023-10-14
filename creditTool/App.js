@@ -10,15 +10,21 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen 
-         name="Home"
-         component={Home} />
-         <Stack.Screen 
-         name="Card Manager"
-         component={ManageCards} />
-         <Stack.Screen 
-         name="Card Recomendation"
-         component={bestCard} />
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Card Manager"
+          component={ManageCards}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Card Recomendation"
+          component={bestCard}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
