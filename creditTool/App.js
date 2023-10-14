@@ -38,7 +38,7 @@ export default function App() {
       {
         status: true,
         name: "amex cobalt",
-        food: 3,
+        restaurant: 3,
         sport_stores: 4,
         travel: 4,
         gas: 5,
@@ -52,7 +52,7 @@ export default function App() {
       {
         status: true,
         name: "PC Financial World Elite",
-        food: 3,
+        restaurant: 3,
         gas: 3,
         groceries: 6,
         travel: 3,

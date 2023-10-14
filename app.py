@@ -6,7 +6,7 @@ import openai
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app, resources={r"/get_cards": {"origins": "exp://100.102.40.209:8081"}})
+CORS(app, resources={r"/get_cards": {"origins": "10.0.2.2:5000"}})
 
 
 key = "AIzaSyDV7Tqo-WBrAuFoMD79oYeV3IwPatt9FQM"
@@ -17,6 +17,7 @@ blacklist = {
     "locality",
     "street_address",
     "premise",
+    "route"
 }
 
 openai.api_key = "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"
@@ -29,14 +30,12 @@ def post_handler():
     longitude = str(data.get("long"))
     cards = data.get("cards")
 
-    print("\n\n\n\n\n\n", latitude)
-
     output = requests.get(
         "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="
         + latitude
         + "%2C"
         + longitude
-        + "&radius=100&key=AIzaSyDV7Tqo-WBrAuFoMD79oYeV3IwPatt9FQM"
+        + "&radius=50&key=AIzaSyDV7Tqo-WBrAuFoMD79oYeV3IwPatt9FQM"
     )
 
     results = json.loads(output.text)["results"]
@@ -44,6 +43,7 @@ def post_handler():
     place = None
 
     for result in results:
+        print(result["types"])
         if result["types"][0] not in blacklist:
             place = result
             break
@@ -73,6 +73,7 @@ def post_handler():
 
     type = response["choices"][0]["message"]["content"]
 
+    print(type, name)
     res = {"value": best_card(type, name, cards)}
 
     return jsonify(res), 200
@@ -98,4 +99,4 @@ def best_card(category, store, cards):
 
 
 if __name__ == "__main__":
-    app.run(host="10.0.2.2", port=5000)
+    app.run()
