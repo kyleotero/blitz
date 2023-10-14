@@ -1,10 +1,10 @@
 cards = [
     {
-        "name": "Triangle world elite mastercard",
+        "Name": "Triangle world elite mastercard",
         "Restaurants":1,
         "Grocery_Stores": 3,
-        "travel": 4,
-        "gas": 0,
+        "Travel": 4,
+        "Gas": 0,
         "other": 1,
         "override": {
             "canadian tire gas": 5,
@@ -25,30 +25,47 @@ cards = [
         },
     },
     {
-        "name": "PC Financial World Elite",
+        "Name": "PC Financial World Elite",
         "Grocery":3,
-        "restaurant":1,
-        "gas": 0,
-        "travel": 3,
-        "other": 1,
-        "override": {
-            "esso": 3,
-            "mobil": 4,
+        "Restaurant":1,
+        "Gas": 0,
+        "Travel": 3,
+        "Other": 1,
+        "Override": {
+            "Esso": 3,
+            "Mobil": 4,
         },
+    },
+    {
+        "Name":"CIBC Student Cashback Card",
+        "Grocery":2,
+        "Restaurants":1,
+        "Gas":1,
+        "Other":0.5,
     },
 
     {
          "Name":"AMEX Cobalt",
          "Grocery": 1,
-         "restaurants": 5,
+         "Restaurants": 5,
          "Entertanment": 3,
          "Travel":2,
          "Other":1,
-         "override": {
+         "Override": {
              "Loblaws": 0,
              "Shoppers": 0,
              "Costco":0,
         },
+    },
+
+    {
+        "Name":"Scotia Momentum Visa Infinite Card",
+        "Grocery":4,
+        "Gas":2,
+        "Travel":1,
+        "Entertanment":2,
+        "Other":1,
+        
     },
 ]
 
