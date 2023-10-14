@@ -1,13 +1,13 @@
 cards = [
     {
         "name": "Triangle world elite mastercard",
-        "Restaurants":,1
+        "Restaurants":1,
         "Grocery_Stores": 3,
         "travel": 4,
         "gas": 0,
         "other": 1,
         "override": {
-            "canadian tire gas", 5
+            "canadian tire gas": 5,
             "Canadian Tire": 4,
             "Sport Chek": 4,
             "Mark's": 4,
