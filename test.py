@@ -26,7 +26,7 @@ cards = [
     },
     {
         "name": "PC Financial World Elite",
-        "Grocery": 3,
+        "Grocery":3,
         "restaurant":1,
         "gas": 0,
         "travel": 3,
