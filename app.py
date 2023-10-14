@@ -6,7 +6,7 @@ import openai
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app, resources={r"/get_cards": {"origins": "http://localhost:19006"}})
+CORS(app, resources={r"/get_cards": {"origins": "exp://100.102.40.209:8081"}})
 
 
 key = "AIzaSyDV7Tqo-WBrAuFoMD79oYeV3IwPatt9FQM"
