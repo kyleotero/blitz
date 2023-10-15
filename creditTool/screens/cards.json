@@ -1,6 +1,5 @@
-{
-    "triangle": {
-        "active": false,
+[{
+        "active": true,
         "name": "Triangle World Elite",
         "restaurants": 1,
         "groceries": 3,
@@ -8,58 +7,51 @@
         "other": 1,
         "override": {
             "canadian tire gas": 5,
-            "Canadian Tire": 4,
-            "Sport Chek": 4,
-            "Mark's": 4,
-            "L'Équipeur": 4,
-            "Party City": 4,
-            "Pro Hockey Life": 4,
-            "Atmosphere": 4,
-            "Sports Rousseau": 4,
-            "Hockey Experts": 4,
-            "L’Entrepôt du Hockey": 4,
-            "Costco": 0,
-            "Walmart": 0,
+            "canadian tire": 4,
+            "sport chek": 4,
+            "mark's": 4,
+            "l'équipeur": 4,
+            "party city": 4,
+            "pro hockey life": 4,
+            "atmosphere": 4,
+            "sports rousseau": 4,
+            "hockey experts": 4,
+            "l’entrepôt du hockey": 4,
             "shoppers": 4.5,
-            "nofrills": 4
+            "no frills": 4
         }
     },
-    "pc": {   
-        "active": false,
+     {   
+        "active": true,
         "name": "PC Financial World Elite",
         "groceries": 3,
         "restaurants": 1,
         "travel": 3,
         "other": 1,
         "override": {
-            "Esso": 3,
-            "Mobil": 4
+            "esso": 3,
+            "mobil": 4
         }
     },
-    "cibc": {
-        "active": false,
+   {
+        "active": true,
         "name": "CIBC Student Cashback",
         "groceries": 2,
         "restaurants": 1,
         "gas": 1,
         "other": 0.5
     },
-    "amex": {
-        "active": false,
+    {
+        "active": true,
         "name": "AMEX Cobalt",
         "groceries": 1,
         "restaurants": 5,
         "entertainment": 3,
         "travel": 2,
-        "other": 1,
-        "override": {
-            "loblaws": 0,
-            "shoppers": 0,
-            "costco": 0
-        }
+        "other": 1
     },
-    "scotia": {
-        "active": false,
+    {
+        "active": true,
         "name": "Scotia Momentum Infinite",
         "groceries": 4,
         "gas": 2,
@@ -67,4 +59,4 @@
         "entertainment": 2,
         "other": 1
     }
-}
+]

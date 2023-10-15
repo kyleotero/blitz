@@ -23,19 +23,36 @@ export default function ManageCards({ navigation }) {
     async function fetchData() {
       try {
         const cardsData = [
-          { cardName: "pc", checked: false, imageSource: pcImage },
-          { cardName: "scotia", checked: false, imageSource: scotiaImg },
-          { cardName: "triangle", checked: false, imageSource: triImg },
-          { cardName: "amex", checked: false, imageSource: amexImg },
-          { cardName: "cibc", checked: false, imageSource: cibcImg },
+          {
+            cardName: "PC Financial World Elite",
+            checked: false,
+            imageSource: pcImage,
+          },
+          {
+            cardName: "Scotia Momentum Infinite",
+            checked: false,
+            imageSource: scotiaImg,
+          },
+          {
+            cardName: "Triangle World Elite",
+            checked: false,
+            imageSource: triImg,
+          },
+          { cardName: "AMEX Cobalt", checked: false, imageSource: amexImg },
+          {
+            cardName: "CIBC Student Cashback",
+            checked: false,
+            imageSource: cibcImg,
+          },
         ];
 
         const storedCards = await AsyncStorage.getItem("cards");
+
         if (storedCards !== null) {
           const parsedCards = JSON.parse(storedCards);
           const updatedData = cardsData.map((card) => ({
             ...card,
-            checked: parsedCards[card.cardName].active,
+            checked: parsedCards[card.cardName]?.active || false,
           }));
           setData(updatedData);
         } else {
@@ -50,22 +67,18 @@ export default function ManageCards({ navigation }) {
   }, []);
 
   const toggleCheckbox = async (cardName) => {
-    setData((prevData) =>
-      prevData.map((item) =>
-        item.cardName === cardName ? { ...item, checked: !item.checked } : item
-      )
+    const updatedData = data.map((item) =>
+      item.cardName === cardName ? { ...item, checked: !item.checked } : item
     );
 
-    try {
-      const storedCards = await AsyncStorage.getItem("cards");
-      if (storedCards !== null) {
-        const updatedCards = JSON.parse(storedCards);
-        updatedCards[cardName].active = !updatedCards[cardName].active;
-        await AsyncStorage.setItem("cards", JSON.stringify(updatedCards));
+    setData(updatedData);
 
-        // Log the updated cards
-        console.log("Updated Cards:", updatedCards);
-      }
+    try {
+      const updatedCards = {};
+      updatedData.forEach((card) => {
+        updatedCards[card.cardName] = { active: card.checked };
+      });
+      await AsyncStorage.setItem("cards", JSON.stringify(updatedCards));
     } catch (error) {
       console.error("Error saving cards to AsyncStorage:", error);
     }
@@ -74,24 +87,23 @@ export default function ManageCards({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.cardContainer}>
-      <FlatList
-        data={data}
-        numColumns={2}
-        keyExtractor={(item) => item.cardName.toString()}
-        contentContainerStyle={[styles.flatListContainer]}
-        renderItem={({ item }) => (
-          <TouchableOpacity onPress={() => toggleCheckbox(item.cardName)}>
-            <View style={styles.imageWrapper}>
-              <Image
-                source={item.imageSource}
-                style={[styles.image, { opacity: item.checked ? 1 : 0.5 }]}
-                resizeMode="contain"
-              />
-              {item.checked && <View style={styles.checkbox} />}
-            </View>
-          </TouchableOpacity>
-        )}
-      />
+        <FlatList
+          data={data}
+          numColumns={2}
+          keyExtractor={(item) => item.cardName.toString()}
+          contentContainerStyle={styles.flatListContainer}
+          renderItem={({ item }) => (
+            <TouchableOpacity onPress={() => toggleCheckbox(item.cardName)}>
+              <View style={styles.imageWrapper}>
+                <Image
+                  source={item.imageSource}
+                  style={[styles.image, { opacity: item.checked ? 1 : 0.3 }]}
+                  resizeMode="contain"
+                />
+              </View>
+            </TouchableOpacity>
+          )}
+        />
       </View>
 
       <View style={styles.buttonContainer}>
@@ -99,10 +111,9 @@ export default function ManageCards({ navigation }) {
           style={styles.button}
           onPress={() => navigation.navigate("Card Recommendation")}
         >
-          <Text style={styles.buttonText}>Go to Best Card</Text>
+          <Text style={styles.buttonText}>Go!</Text>
         </TouchableOpacity>
       </View>
-      <StatusBar style="auto" />
     </View>
   );
 }
@@ -138,31 +149,31 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   cardContainer: {
-    position: 'absolute',
+    position: "absolute",
     top: 100,
   },
   button: {
-    alignContent: 'center',
-    justifyContent: 'center',
-    alignItems:'center',
+    alignContent: "center",
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: "white",
-    width: 150,
+    width: 100,
     marginTop: 30,
-    height: 50,
+    height: 100,
     borderRadius: 15,
     borderColor: "black",
     borderWidth: 2,
   },
   buttonContainer: {
     alignItems: "center",
-    position: 'absolute',
+    position: "absolute",
     bottom: 200,
   },
   buttonText: {
-    justifyContent: 'center',
-    alignContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignContent: "center",
+    alignItems: "center",
     color: "black",
-    fontSize: 18,
+    fontSize: 36,
   },
 });

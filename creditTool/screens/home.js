@@ -1,14 +1,10 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View, TouchableOpacity, Text, Image } from "react-native";
 import homeImage from "../assets/homeImage.png";
-import homeBg from "../assets/homeBg.png";
-import { useFonts } from "expo-font";
 
 export default function Home({ navigation }) {
   return (
     <View style={styles.container}>
-      <Image source={homeBg} style={styles.homeBg} resizeMode="cover" />
-
       <View style={styles.contentContainer}>
         <View style={styles.textOverlay}>
           <Text style={styles.blitzText}>Blitz</Text>
@@ -24,7 +20,7 @@ export default function Home({ navigation }) {
           style={styles.buttonCard}
           onPress={() => navigation.navigate("Card Recommendation")}
         >
-          <Text style={styles.buttonText}>Best Card</Text>
+          <Text style={styles.buttonText}>Go!</Text>
         </TouchableOpacity>
 
         <View style={styles.bottomButton}>
@@ -49,29 +45,22 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  homeBg: {
-    minWidth: 400,
-    minHeight: 210,
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-  },
   textOverlay: {
     position: "absolute",
     top: 0, // Adjust the top position as needed
     left: 10, // Adjust the left position as needed
     right: 10, // Adjust the right position as needed
     alignItems: "center",
-    
   },
   titleText: {
-    fontSize: 30,
+    fontSize: 24,
+    bottom: 90,
   },
   blitzText: {
-    textAlign: 'center',
+    textAlign: "center",
+    top: 100,
     fontSize: 130, // You can adjust the style of the "blitz" text
-    color: "white", // Set the text color
+    color: "black", // Set the text color
     fontWeight: "400",
   },
   bottomButton: {
@@ -79,6 +68,7 @@ const styles = StyleSheet.create({
   },
   subText: {
     fontSize: 16,
+    bottom: 90,
   },
   contentContainer: {
     flex: 1,
@@ -88,6 +78,8 @@ const styles = StyleSheet.create({
   buttonContainer: {
     alignItems: "center",
     justifyContent: "flex-end",
+    borderColor: "black",
+    borderRadius: 10,
   },
   image: {
     maxWidth: 280,
@@ -95,29 +87,35 @@ const styles = StyleSheet.create({
     minWidth: 220,
     minHeight: 220,
     marginBottom: 5,
+    bottom: 60,
   },
   buttonCard: {
-    width: 240,
-    height: 75,
-    backgroundColor: "#D9D9D9",
+    width: 180,
+    height: 60,
+    backgroundColor: "white",
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 15,
+    bottom: 40,
     elevation: 10, // Set the elevation for Android shadow
+    borderColor: "black",
+    borderWidth: 2,
   },
   buttonManage: {
-    width: 240,
-    height: 75,
+    width: 180,
+    height: 60,
     margin: 10,
-    backgroundColor: "#D9D9D9",
+    backgroundColor: "white",
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 15,
+    bottom: 30,
     elevation: 10, // Set the elevation for Android shadow
+    borderColor: "black",
+    borderWidth: 2,
   },
   buttonText: {
-    fontSize: 45,
-    fontWeight: "600",
-    color: "#000",
+    fontSize: 30,
+    color: "black",
   },
 });

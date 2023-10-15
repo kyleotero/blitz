@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { Button, Image, StyleSheet, Text, View } from "react-native";
+import { TouchableOpacity, Image, StyleSheet, Text, View } from "react-native";
 import { useState, useEffect } from "react";
 import * as Location from "expo-location";
 import axios from "axios";
@@ -9,14 +9,26 @@ import cibcimg from "../assets/cibc.png";
 import ameximg from "../assets/amex.png";
 import scotiaimg from "../assets/scotia.png";
 import { useFonts } from "expo-font";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function BestCard({ navigation }) {
-  const [loaded] = useFonts({
-    Roboto: require("../assets/Roboto/Roboto-Medium.ttf"),
+  const [cards, setCards] = useState([]);
+
+  async function get_cards() {
+    const temp = await AsyncStorage.getItem("cards");
+    setCards(JSON.parse(temp));
+  }
+
+  get_cards();
+
+  const [] = useFonts({
+    Robotothin: require("../assets/Roboto/Roboto-Thin.ttf"),
+    Robotomed: require("../assets/Roboto/Roboto-Medium.ttf"),
   });
 
   const [location, setLocation] = useState();
   const [temp, setTemp] = useState(null);
+  const [store, setStore] = useState();
 
   const images = {
     "PC Financial World Elite": pcimg,
@@ -47,39 +59,23 @@ export default function BestCard({ navigation }) {
     if (location) {
       const { latitude, longitude } = location.coords;
 
-      const url = `http://10.0.2.2:5000/get_cards`;
+      const newcards = require("./cards.json");
+      for (const [key, value] of Object.entries(cards)) {
+        for (var j = 0; j < newcards.length; j++) {
+          if (value["active"] == true && key == newcards[j]["name"]) {
+            newcards[j]["active"] = true;
+          } else if (value["active"] == false && key == newcards[j]["name"]) {
+            newcards[j]["active"] = false;
+          }
+        }
+      }
+      console.log("\n\n\n\n", newcards);
+
+      const url = `http://127.0.0.1:5000/get_cards`;
       const data = {
         lat: latitude,
         long: longitude,
-        cards: [
-          {
-            status: true,
-            name: "AMEX Cobalt",
-            restaurant: 3,
-            sport_stores: 4,
-            travel: 4,
-            gas: 5,
-            groceries: 3,
-            other: 1,
-            override: {
-              shoppers: 4.5,
-              nofrills: 4,
-            },
-          },
-          {
-            status: true,
-            name: "PC Financial World Elite",
-            restaurant: 3,
-            gas: 3,
-            groceries: 6,
-            travel: 3,
-            other: 1,
-            override: {
-              esso: 65,
-              dick: 4,
-            },
-          },
-        ],
+        cards: newcards,
       };
 
       axios
@@ -88,6 +84,7 @@ export default function BestCard({ navigation }) {
           // Handle the response data
           console.log("Response:", response.data);
           setTemp(response.data["value"]);
+          setStore(response.data["store"]);
         })
         .catch((error) => {
           // Handle error
@@ -101,10 +98,13 @@ export default function BestCard({ navigation }) {
       <StatusBar style="auto" />
       {temp && temp.length > 0 ? (
         <>
-          <Text style={{ fontFamily: "Roboto", fontSize: 18 }}>
+          <Text style={{ fontFamily: "Robotomed", fontSize: 24, bottom: 80 }}>
+            It looks like you're at {store}!
+          </Text>
+          <Text style={{ fontFamily: "Robotomed", fontSize: 18 }}>
             Your best card for this purchase is the
           </Text>
-          <Text style={{ fontFamily: "Roboto", fontSize: 18 }}>
+          <Text style={{ fontFamily: "Robotomed", fontSize: 18 }}>
             {temp[0] + " with a " + temp[1] + "% cashback!"}
           </Text>
           <View style={styles.imageWrapper}>
@@ -113,10 +113,15 @@ export default function BestCard({ navigation }) {
               style={styles.pic}
               resizeMode="contain"
             />
-            <Button
+          </View>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity
               title="To card "
+              style={styles.button}
               onPress={() => navigation.navigate("Home")}
-            ></Button>
+            >
+              <Text style={styles.buttonText}>Home</Text>
+            </TouchableOpacity>
           </View>
         </>
       ) : (
@@ -134,10 +139,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   imageWrapper: {
-    shadowColor: "black", // Shadow color
+    shadowColor: "black", // Shadow colo
     shadowOffset: { width: 0, height: 10 }, // Offset (x, y)
-    shadowOpacity: 1, // Opacity (0 to 1)
-    shadowRadius: 10, // Radius
+    shadowOpacity: 0.7, // Opacity (0 to 1)
+    shadowRadius: 20, // Radius
     padding: 16,
   },
   pic: {
@@ -146,6 +151,22 @@ const styles = StyleSheet.create({
     // width: "100%", // Set the width to 100% to ensure it fits within the maxWidth
   },
   button: {
-    backgroundColor: "black",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "white",
+    width: 150,
+    marginTop: 30,
+    height: 50,
+    borderRadius: 15,
+    borderColor: "black",
+    borderWidth: 2,
+  },
+  buttonContainer: {
+    alignItems: "center",
+    justifyContent: "flex-end",
+  },
+  buttonText: {
+    color: "black",
+    fontSize: 22,
   },
 });

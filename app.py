@@ -2,14 +2,14 @@ import json
 from flask import Flask, jsonify, request
 import requests
 import openai
+from decouple import config
 
 from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app, resources={r"/get_cards": {"origins": "10.0.2.2:5000"}})
 
-
-key = "AIzaSyDV7Tqo-WBrAuFoMD79oYeV3IwPatt9FQM"
+api_key = config("google")
 blacklist = {
     "sublocality_level_1",
     "sublocality",
@@ -20,7 +20,7 @@ blacklist = {
     "route",
 }
 
-openai.api_key = "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"
+openai.api_key = config("openai")
 
 
 @app.route("/get_cards", methods=["POST"])
@@ -35,7 +35,8 @@ def get_cards():
         + latitude
         + "%2C"
         + longitude
-        + "&radius=50&key=AIzaSyDV7Tqo-WBrAuFoMD79oYeV3IwPatt9FQM"
+        + "&radius=50&key="
+        + api_key
     )
 
     results = json.loads(output.text)["results"]
@@ -50,7 +51,7 @@ def get_cards():
     if place is None:
         return {}, 400
 
-    name = place["name"]
+    name = place["name"].lower()
     type = place["types"][0]
 
     if type in blacklist:
@@ -70,10 +71,11 @@ def get_cards():
         ],
     )
 
-    type = response["choices"][0]["message"]["content"]
+    type = response["choices"][0]["message"]["content"].lower()
 
     print(type, name)
-    res = {"value": best_card(type, name, cards)}
+    res = {"value": best_card(type, name, cards), "store": name}
+    print(res)
 
     return jsonify(res), 200
 
@@ -87,8 +89,8 @@ def best_card(category, store, cards):
     greatest = ("", 0)
 
     for card in cards:
-        if card["status"]:
-            if store in card["override"]:
+        if card["active"]:
+            if "override" in card and store in card["override"]:
                 if card["override"][store] > greatest[1]:
                     greatest = (card["name"], card["override"][store])
                     break
