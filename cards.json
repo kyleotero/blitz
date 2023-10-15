@@ -1,5 +1,5 @@
-[
-    {
+{
+    "triangle": {
         "active": true,
         "name": "Triangle world elite mastercard",
         "restaurants": 1,
@@ -24,7 +24,7 @@
             "nofrills": 4
         }
     },
-    {   
+    "pc": {   
         "active": true,
         "name": "PC Financial World Elite",
         "groceries": 3,
@@ -36,7 +36,7 @@
             "Mobil": 4
         }
     },
-    {
+    "cibc": {
         "active": true,
         "name": "CIBC Student Cashback Card",
         "groceries": 2,
@@ -44,7 +44,7 @@
         "gas": 1,
         "other": 0.5
     },
-    {
+    "amex": {
         "active": true,
         "name": "AMEX Cobalt",
         "groceries": 1,
@@ -58,7 +58,7 @@
             "costco": 0
         }
     },
-    {
+    "scotia": {
         "active": true,
         "name": "Scotia Momentum Visa Infinite Card",
         "groceries": 4,
@@ -67,4 +67,4 @@
         "entertainment": 2,
         "other": 1
     }
-]
+}
