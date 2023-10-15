@@ -21,7 +21,7 @@ export default function App() {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="Card Recomendation"
+          name="Card Recommendation"
           component={BestCard}
           options={{ headerShown: false }}
         />
