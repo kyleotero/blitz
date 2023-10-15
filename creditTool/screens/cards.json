@@ -1,6 +1,6 @@
 {
     "triangle": {
-        "active": true,
+        "active": false,
         "name": "Triangle World Elite",
         "restaurants": 1,
         "groceries": 3,
@@ -25,7 +25,7 @@
         }
     },
     "pc": {   
-        "active": true,
+        "active": false,
         "name": "PC Financial World Elite",
         "groceries": 3,
         "restaurants": 1,
@@ -37,7 +37,7 @@
         }
     },
     "cibc": {
-        "active": true,
+        "active": false,
         "name": "CIBC Student Cashback",
         "groceries": 2,
         "restaurants": 1,
@@ -45,7 +45,7 @@
         "other": 0.5
     },
     "amex": {
-        "active": true,
+        "active": false,
         "name": "AMEX Cobalt",
         "groceries": 1,
         "restaurants": 5,
@@ -59,7 +59,7 @@
         }
     },
     "scotia": {
-        "active": true,
+        "active": false,
         "name": "Scotia Momentum Infinite",
         "groceries": 4,
         "gas": 2,

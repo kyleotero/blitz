@@ -11,7 +11,7 @@ export default function ManageCards({ navigation }) {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        const activeCards = Object.keys(cards).filter(cardName => cards[cardName].active);
+        const activeCards = Object.keys(cards).filter(cardName => !cards[cardName].active);
 
         const cardsData = activeCards.map(cardName => ({
             cardName: cardName,
@@ -46,12 +46,12 @@ export default function ManageCards({ navigation }) {
 
         const updatedCards = { ...cards, [cardName]: { ...cards[cardName], active: true } };
         // Save updatedCards back to the cards.json file or wherever you're storing it.
+        
     };
 
     return (
         <View style={styles.container}>
             <FlatList
-                style={styles.gridItem}
                 data={data}
                 numColumns={2}
                 keyExtractor={(item) => item.cardName.toString()}
