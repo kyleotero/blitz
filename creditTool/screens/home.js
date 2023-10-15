@@ -1,10 +1,10 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Button, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Button, View } from "react-native";
 
 export default function Home({ navigation }) {
   return (
     <View style={styles.container}>
-      <Button 
+      <Button
         title="go to card manager"
         onPress={() => navigation.navigate("Card Manager")}
       />
@@ -16,8 +16,8 @@ export default function Home({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
