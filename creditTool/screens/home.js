@@ -22,7 +22,7 @@ export default function Home({ navigation }) {
 
         <TouchableOpacity
           style={styles.buttonCard}
-          onPress={() => navigation.navigate("Best Card")}
+          onPress={() => navigation.navigate("Card Recommendation")}
         >
           <Text style={styles.buttonText}>Best Card</Text>
         </TouchableOpacity>
