@@ -8,6 +8,10 @@ export default function bestCard() {
   const [location, setLocation] = useState();
   const [temp, setTemp] = useState(null);
 
+  const images = {
+    "PC Financial": "pc.png",
+  };
+
   useEffect(() => {
     const getPermissions = async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();

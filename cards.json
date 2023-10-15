@@ -1,7 +1,7 @@
 {
     "triangle": {
         "active": true,
-        "name": "Triangle world elite mastercard",
+        "name": "Triangle World Elite",
         "restaurants": 1,
         "groceries": 3,
         "travel": 4,
@@ -38,7 +38,7 @@
     },
     "cibc": {
         "active": true,
-        "name": "CIBC Student Cashback Card",
+        "name": "CIBC Student Cashback",
         "groceries": 2,
         "restaurants": 1,
         "gas": 1,
@@ -60,7 +60,7 @@
     },
     "scotia": {
         "active": true,
-        "name": "Scotia Momentum Visa Infinite Card",
+        "name": "Scotia Momentum Infinite",
         "groceries": 4,
         "gas": 2,
         "travel": 1,
