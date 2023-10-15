@@ -1,4 +1,4 @@
-import bestCard from "./screens/bestCard";
+import BestCard from "./screens/bestCard";
 import Home from "./screens/home";
 import ManageCards from "./screens/manageCards.js";
 import { NavigationContainer } from "@react-navigation/native";
@@ -22,7 +22,7 @@ export default function App() {
         />
         <Stack.Screen
           name="Card Recomendation"
-          component={bestCard}
+          component={BestCard}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

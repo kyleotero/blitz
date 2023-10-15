@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Button, View } from 'react-native';
 
-export default function manageCards({ navigation }) {
+export default function ManageCards({ navigation }) {
   return (
     <View style={styles.container}>
       <Button 
