@@ -1,6 +1,6 @@
-import bestCard from "./screens/bestCard";
-import Home from "./screens/home";
-import ManageCards from "./screens/manageCards.js";
+import BestCard from "./screens/BestCard";
+import Home from "./screens/Home";
+import ManageCards from "./screens/ManageCards.js";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -21,8 +21,8 @@ export default function App() {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="Card Recomendation"
-          component={bestCard}
+          name="Card Recommendation"
+          component={BestCard}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
