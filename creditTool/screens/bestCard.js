@@ -47,7 +47,7 @@ export default function BestCard({ navigation }) {
     if (location) {
       const { latitude, longitude } = location.coords;
 
-      const url = `http://10.0.2.2:5000/get_cards`;
+      const url = `http://127.0.0.1:5000/get_cards`;
       const data = {
         lat: latitude,
         long: longitude,
@@ -144,5 +144,8 @@ const styles = StyleSheet.create({
     maxWidth: 250, // Maximum width
     maxHeight: 140, // Maximum height
     // width: "100%", // Set the width to 100% to ensure it fits within the maxWidth
+  },
+  button: {
+    backgroundColor: "black",
   },
 });
